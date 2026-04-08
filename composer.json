@@ -1,0 +1,42 @@
+{
+    "name": "carmelosantana/coqui-toolkit-basecoat-ui",
+    "description": "Basecoat UI component library toolkit for Coqui Bot — prefetched component registry, v0-style page design, and project scaffolding",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "carmelosantana/php-agents": "^0.7",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitBasecoatUi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitBasecoatUi\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "php-agents": {
+            "toolkits": [
+                "CarmeloSantana\\CoquiToolkitBasecoatUi\\BasecoatToolkit"
+            ],
+            "description": "Basecoat UI component library — browse, search, scaffold and design pages with 38 prefetched components. Works with code-edit and claude-code for file placement."
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

@@ -1,0 +1,926 @@
+{
+    "version": "0.3.11",
+    "source": "https://basecoatui.com",
+    "cdn": "https://cdn.jsdelivr.net/npm/basecoat-css@0.3.11",
+    "components": [
+        {
+            "slug": "accordion",
+            "name": "Accordion",
+            "description": "A vertically stacked set of interactive headings that each reveal a section of content. Uses native HTML <details> and <summary> elements with CSS animations.",
+            "category": "navigation",
+            "tags": ["disclosure", "collapsible", "faq", "expandable"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Accordion using native details/summary elements",
+                    "html": "<div class=\"divide-y\">\n  <details open>\n    <summary class=\"flex cursor-pointer items-center justify-between py-4 text-sm font-medium\">\n      Is it accessible?\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 shrink-0\"><path d=\"m6 9 6 6 6-6\"/></svg>\n    </summary>\n    <div class=\"pb-4 text-sm\">Yes. It adheres to the WAI-ARIA design pattern.</div>\n  </details>\n  <details>\n    <summary class=\"flex cursor-pointer items-center justify-between py-4 text-sm font-medium\">\n      Is it styled?\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 shrink-0\"><path d=\"m6 9 6 6 6-6\"/></svg>\n    </summary>\n    <div class=\"pb-4 text-sm\">Yes. It comes with default styles using Tailwind CSS.</div>\n  </details>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Uses native <details>/<summary> elements for built-in keyboard and screen reader support."
+        },
+        {
+            "slug": "alert",
+            "name": "Alert",
+            "description": "Displays a callout for user attention with optional icon, title, and description.",
+            "category": "feedback",
+            "tags": ["callout", "notification", "message", "info", "warning", "error"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["alert", "alert-destructive"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Default alert with icon, title, and description",
+                    "html": "<div class=\"alert\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <circle cx=\"12\" cy=\"12\" r=\"10\" />\n    <path d=\"m9 12 2 2 4-4\" />\n  </svg>\n  <h2>Success! Your changes have been saved</h2>\n  <section>This is an alert with icon, title and description.</section>\n</div>"
+                },
+                {
+                    "name": "destructive",
+                    "description": "Destructive/error alert style",
+                    "html": "<div class=\"alert-destructive\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n    <circle cx=\"12\" cy=\"12\" r=\"10\" />\n    <line x1=\"12\" x2=\"12\" y1=\"8\" y2=\"12\" />\n    <line x1=\"12\" x2=\"12.01\" y1=\"16\" y2=\"16\" />\n  </svg>\n  <h2>Something went wrong!</h2>\n  <section>Your session has expired. Please log in again.</section>\n</div>"
+                },
+                {
+                    "name": "no-icon",
+                    "description": "Alert without an icon",
+                    "html": "<div class=\"alert\">\n  <h2>Success! Your changes have been saved</h2>\n  <section>This is an alert without an icon.</section>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Structure: <div class=\"alert\"> wraps <svg> (optional icon), <h2> (title), <section> (optional description)."
+        },
+        {
+            "slug": "alert-dialog",
+            "name": "Alert Dialog",
+            "description": "A modal dialog that interrupts the user with important content and expects a response. Unlike Dialog, it has no close button and cannot be dismissed by clicking the backdrop.",
+            "category": "overlay",
+            "tags": ["modal", "confirm", "confirmation", "destructive", "warning"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["dialog"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Confirmation alert dialog",
+                    "html": "<button type=\"button\" onclick=\"document.getElementById('alert-dialog').showModal()\" class=\"btn-outline\">Open alert dialog</button>\n\n<dialog id=\"alert-dialog\" class=\"dialog\" aria-labelledby=\"alert-dialog-title\" aria-describedby=\"alert-dialog-description\">\n  <div>\n    <header>\n      <h2 id=\"alert-dialog-title\">Are you absolutely sure?</h2>\n      <p id=\"alert-dialog-description\">This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>\n    </header>\n    <footer>\n      <button class=\"btn-outline\" onclick=\"document.getElementById('alert-dialog').close()\">Cancel</button>\n      <button class=\"btn-primary\" onclick=\"document.getElementById('alert-dialog').close()\">Continue</button>\n    </footer>\n  </div>\n</dialog>"
+                }
+            ],
+            "accessibility_notes": "Uses native <dialog> with showModal(). Set aria-labelledby and aria-describedby. No backdrop click dismiss, no close button — forces user decision."
+        },
+        {
+            "slug": "avatar",
+            "name": "Avatar",
+            "description": "An image element with a fallback for representing the user. Uses Tailwind utility classes — no dedicated Basecoat class.",
+            "category": "data-display",
+            "tags": ["user", "profile", "image", "picture"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Single avatar image",
+                    "html": "<img class=\"size-8 shrink-0 object-cover rounded-full\" alt=\"@username\" src=\"https://github.com/hunvreus.png\" />"
+                },
+                {
+                    "name": "group",
+                    "description": "Group of overlapping avatars",
+                    "html": "<div class=\"flex -space-x-2\">\n  <img class=\"size-8 shrink-0 object-cover rounded-full ring-2 ring-background\" alt=\"@user1\" src=\"https://github.com/hunvreus.png\" />\n  <img class=\"size-8 shrink-0 object-cover rounded-full ring-2 ring-background\" alt=\"@user2\" src=\"https://github.com/shadcn.png\" />\n  <img class=\"size-8 shrink-0 object-cover rounded-full ring-2 ring-background\" alt=\"@user3\" src=\"https://github.com/adamwathan.png\" />\n</div>"
+                }
+            ],
+            "accessibility_notes": "Always include a meaningful alt attribute on avatar images."
+        },
+        {
+            "slug": "badge",
+            "name": "Badge",
+            "description": "Displays a badge or a component that looks like a badge. Supports primary, secondary, destructive, and outline variants.",
+            "category": "data-display",
+            "tags": ["tag", "label", "status", "chip", "pill"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["badge", "badge-primary", "badge-secondary", "badge-destructive", "badge-outline"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Primary badge (default)",
+                    "html": "<span class=\"badge\">Badge</span>"
+                },
+                {
+                    "name": "secondary",
+                    "description": "Secondary badge style",
+                    "html": "<span class=\"badge-secondary\">Secondary</span>"
+                },
+                {
+                    "name": "destructive",
+                    "description": "Destructive badge style",
+                    "html": "<span class=\"badge-destructive\">Destructive</span>"
+                },
+                {
+                    "name": "outline",
+                    "description": "Outline badge style",
+                    "html": "<span class=\"badge-outline\">Outline</span>"
+                },
+                {
+                    "name": "with-icon",
+                    "description": "Badge with an icon",
+                    "html": "<span class=\"badge-secondary\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\" /><path d=\"m9 12 2 2 4-4\" /></svg>\n  Verified\n</span>"
+                },
+                {
+                    "name": "counter",
+                    "description": "Badge as a numeric counter (pill)",
+                    "html": "<span class=\"badge rounded-full h-5 min-w-5 px-1 font-mono tabular-nums\">8</span>"
+                }
+            ],
+            "accessibility_notes": "Use <span> for decorative badges. Use <a> for clickable badge links."
+        },
+        {
+            "slug": "breadcrumb",
+            "name": "Breadcrumb",
+            "description": "Displays the path to the current resource using a hierarchy of links. Uses Tailwind utility classes with ordered list — no dedicated Basecoat class.",
+            "category": "navigation",
+            "tags": ["navigation", "path", "trail", "hierarchy"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic breadcrumb navigation",
+                    "html": "<ol class=\"text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5\">\n  <li class=\"inline-flex items-center gap-1.5\">\n    <a href=\"#\" class=\"hover:text-foreground transition-colors\">Home</a>\n  </li>\n  <li>\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5\"><path d=\"m9 18 6-6-6-6\" /></svg>\n  </li>\n  <li class=\"inline-flex items-center gap-1.5\">\n    <a href=\"#\" class=\"hover:text-foreground transition-colors\">Components</a>\n  </li>\n  <li>\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5\"><path d=\"m9 18 6-6-6-6\" /></svg>\n  </li>\n  <li class=\"inline-flex items-center gap-1.5 text-foreground\">Breadcrumb</li>\n</ol>"
+                }
+            ],
+            "accessibility_notes": "Use <ol> for proper semantic structure. Current page should not be a link."
+        },
+        {
+            "slug": "button",
+            "name": "Button",
+            "description": "Displays a button or a component that looks like a button. Supports multiple variants and sizes that can be combined.",
+            "category": "form",
+            "tags": ["action", "click", "submit", "cta", "interactive"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["btn", "btn-primary", "btn-secondary", "btn-destructive", "btn-outline", "btn-ghost", "btn-link", "btn-icon", "btn-sm", "btn-lg", "btn-sm-outline", "btn-lg-destructive", "btn-icon-ghost", "btn-icon-outline", "btn-icon-destructive"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Primary button (default)",
+                    "html": "<button class=\"btn\">Button</button>"
+                },
+                {
+                    "name": "secondary",
+                    "description": "Secondary button style",
+                    "html": "<button class=\"btn-secondary\">Secondary</button>"
+                },
+                {
+                    "name": "destructive",
+                    "description": "Destructive/danger button style",
+                    "html": "<button class=\"btn-destructive\">Destructive</button>"
+                },
+                {
+                    "name": "outline",
+                    "description": "Outlined button style",
+                    "html": "<button class=\"btn-outline\">Outline</button>"
+                },
+                {
+                    "name": "ghost",
+                    "description": "Ghost button with minimal styling",
+                    "html": "<button class=\"btn-ghost\">Ghost</button>"
+                },
+                {
+                    "name": "link",
+                    "description": "Button styled as a hyperlink",
+                    "html": "<button class=\"btn-link\">Link</button>"
+                },
+                {
+                    "name": "icon",
+                    "description": "Icon-only button",
+                    "html": "<button class=\"btn-icon\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6 9 6 6 6-6\"/></svg>\n</button>"
+                },
+                {
+                    "name": "with-icon",
+                    "description": "Button with icon and text",
+                    "html": "<button class=\"btn\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\" /><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\" /></svg>\n  Send email\n</button>"
+                },
+                {
+                    "name": "small",
+                    "description": "Small button",
+                    "html": "<button class=\"btn-sm\">Small</button>"
+                },
+                {
+                    "name": "large",
+                    "description": "Large button",
+                    "html": "<button class=\"btn-lg\">Large</button>"
+                },
+                {
+                    "name": "loading",
+                    "description": "Button with loading spinner",
+                    "html": "<button class=\"btn\" disabled>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"animate-spin\" role=\"status\" aria-label=\"Loading\"><path d=\"M21 12a9 9 0 1 1-6.219-8.56\" /></svg>\n  Loading\n</button>"
+                }
+            ],
+            "accessibility_notes": "Use <button> for actions and <a> for navigation. Combine variant + size classes: e.g. btn-lg-destructive, btn-sm-icon-outline."
+        },
+        {
+            "slug": "button-group",
+            "name": "Button Group",
+            "description": "Groups related buttons together with connected styling. Uses Tailwind utility classes for layout.",
+            "category": "form",
+            "tags": ["toolbar", "actions", "segmented", "group"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Horizontal button group",
+                    "html": "<div class=\"flex -space-x-px\">\n  <button class=\"btn-outline rounded-r-none\">Left</button>\n  <button class=\"btn-outline rounded-none\">Center</button>\n  <button class=\"btn-outline rounded-l-none\">Right</button>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use role=\"group\" with aria-label for semantic grouping when appropriate."
+        },
+        {
+            "slug": "card",
+            "name": "Card",
+            "description": "Displays a card with header, content, and footer sections.",
+            "category": "layout",
+            "tags": ["container", "panel", "box", "content", "section"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["card"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic card with header, content, and footer",
+                    "html": "<div class=\"card\">\n  <header>\n    <h2>Card Title</h2>\n    <p>Card Description</p>\n  </header>\n  <section>\n    <p>Card Content</p>\n  </section>\n  <footer>\n    <p>Card Footer</p>\n  </footer>\n</div>"
+                },
+                {
+                    "name": "login",
+                    "description": "Login form card example",
+                    "html": "<div class=\"card w-full max-w-sm\">\n  <header>\n    <h2>Login to your account</h2>\n    <p>Enter your details below to login to your account</p>\n  </header>\n  <section>\n    <form class=\"form grid gap-6\">\n      <div class=\"grid gap-2\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" placeholder=\"m@example.com\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <label for=\"password\">Password</label>\n        <input type=\"password\" id=\"password\" />\n      </div>\n      <button class=\"btn w-full\">Login</button>\n    </form>\n  </section>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Structure: <div class=\"card\"> wraps <header> (title + description), <section> (content), <footer> (actions)."
+        },
+        {
+            "slug": "checkbox",
+            "name": "Checkbox",
+            "description": "A control that allows the user to toggle between checked and not checked.",
+            "category": "form",
+            "tags": ["toggle", "check", "tick", "boolean", "option"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": ["input"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic checkbox",
+                    "html": "<input type=\"checkbox\" class=\"input\">"
+                },
+                {
+                    "name": "with-label",
+                    "description": "Checkbox with label text",
+                    "html": "<div class=\"flex items-center gap-2\">\n  <input type=\"checkbox\" id=\"terms\" class=\"input\">\n  <label for=\"terms\" class=\"label\">Accept terms and conditions</label>\n</div>"
+                },
+                {
+                    "name": "with-description",
+                    "description": "Checkbox with label and description text",
+                    "html": "<div class=\"flex items-start gap-2\">\n  <input type=\"checkbox\" id=\"terms2\" class=\"input mt-0.5\">\n  <div class=\"grid gap-1.5\">\n    <label for=\"terms2\" class=\"label\">Accept terms and conditions</label>\n    <p class=\"text-muted-foreground text-sm\">By clicking this checkbox, you agree to the terms and conditions.</p>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use <input type=\"checkbox\"> with 'input' class. Set aria-invalid=\"true\" for invalid state. Use <label> with for attribute."
+        },
+        {
+            "slug": "combobox",
+            "name": "Combobox",
+            "description": "Autocomplete input and command palette with a list of suggestions. Combines an input with a filterable dropdown.",
+            "category": "form",
+            "tags": ["autocomplete", "typeahead", "search", "filter", "select"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["select"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic combobox with search input",
+                    "html": "<div id=\"my-combobox\" class=\"select\">\n  <button type=\"button\" class=\"btn-outline w-[200px]\" id=\"my-combobox-trigger\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"my-combobox-listbox\">\n    <span class=\"truncate\">Select option...</span>\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground opacity-50 shrink-0\"><path d=\"m7 15 5 5 5-5\" /><path d=\"m7 9 5-5 5 5\" /></svg>\n  </button>\n  <div id=\"my-combobox-popover\" data-popover aria-hidden=\"true\">\n    <header>\n      <input type=\"text\" placeholder=\"Search...\" autocomplete=\"off\" role=\"combobox\" />\n    </header>\n    <div role=\"listbox\" id=\"my-combobox-listbox\">\n      <div role=\"option\" data-value=\"option1\">Option 1</div>\n      <div role=\"option\" data-value=\"option2\">Option 2</div>\n      <div role=\"option\" data-value=\"option3\">Option 3</div>\n    </div>\n  </div>\n  <input type=\"hidden\" name=\"my-field\" value=\"\" />\n</div>"
+                }
+            ],
+            "accessibility_notes": "Uses role=\"listbox\" and role=\"option\". Requires basecoat.min.js + select.min.js. Keyboard navigable."
+        },
+        {
+            "slug": "command",
+            "name": "Command",
+            "description": "Fast, composable, unstyled command menu. A command palette for searching and executing actions.",
+            "category": "navigation",
+            "tags": ["palette", "search", "actions", "shortcuts", "launcher"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["select"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Command palette in a dialog",
+                    "html": "<dialog id=\"command-dialog\" class=\"dialog w-full sm:max-w-[500px]\">\n  <div>\n    <div id=\"command-select\" class=\"select\">\n      <div>\n        <header>\n          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" /></svg>\n          <input type=\"text\" placeholder=\"Type a command or search...\" autocomplete=\"off\" role=\"combobox\" />\n        </header>\n        <div role=\"listbox\">\n          <div role=\"group\" aria-labelledby=\"suggestions-label\">\n            <div role=\"heading\" id=\"suggestions-label\">Suggestions</div>\n            <div role=\"option\" data-value=\"calendar\">Calendar</div>\n            <div role=\"option\" data-value=\"search\">Search</div>\n            <div role=\"option\" data-value=\"settings\">Settings</div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</dialog>"
+                }
+            ],
+            "accessibility_notes": "Typically placed in a dialog. Uses listbox/option pattern with search filtering."
+        },
+        {
+            "slug": "dialog",
+            "name": "Dialog",
+            "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+            "category": "overlay",
+            "tags": ["modal", "popup", "overlay", "window", "sheet"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["dialog"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Dialog with form content",
+                    "html": "<button type=\"button\" onclick=\"document.getElementById('my-dialog').showModal()\" class=\"btn-outline\">Edit Profile</button>\n\n<dialog id=\"my-dialog\" class=\"dialog w-full sm:max-w-[425px]\" aria-labelledby=\"my-dialog-title\" aria-describedby=\"my-dialog-description\" onclick=\"if (event.target === this) this.close()\">\n  <div>\n    <header>\n      <h2 id=\"my-dialog-title\">Edit profile</h2>\n      <p id=\"my-dialog-description\">Make changes to your profile here. Click save when you're done.</p>\n    </header>\n    <section>\n      <form class=\"form grid gap-4\">\n        <div class=\"grid gap-3\">\n          <label for=\"dialog-name\">Name</label>\n          <input type=\"text\" value=\"Pedro Duarte\" id=\"dialog-name\" />\n        </div>\n        <div class=\"grid gap-3\">\n          <label for=\"dialog-username\">Username</label>\n          <input type=\"text\" value=\"@peduarte\" id=\"dialog-username\" />\n        </div>\n      </form>\n    </section>\n    <footer>\n      <button class=\"btn-outline\" onclick=\"this.closest('dialog').close()\">Cancel</button>\n      <button class=\"btn\" onclick=\"this.closest('dialog').close()\">Save changes</button>\n    </footer>\n    <button type=\"button\" aria-label=\"Close dialog\" onclick=\"this.closest('dialog').close()\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 6 6 18\" /><path d=\"m6 6 12 12\" /></svg>\n    </button>\n  </div>\n</dialog>"
+                }
+            ],
+            "accessibility_notes": "Uses native <dialog> with showModal(). Set aria-labelledby and aria-describedby. Close on backdrop click with onclick handler."
+        },
+        {
+            "slug": "dropdown-menu",
+            "name": "Dropdown Menu",
+            "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+            "category": "overlay",
+            "tags": ["menu", "context", "actions", "options", "popover"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["dropdown-menu"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Dropdown menu with grouped items",
+                    "html": "<div id=\"my-dropdown\" class=\"dropdown-menu\">\n  <button type=\"button\" id=\"my-dropdown-trigger\" aria-haspopup=\"menu\" aria-controls=\"my-dropdown-menu\" aria-expanded=\"false\" class=\"btn-outline\">Open</button>\n  <div id=\"my-dropdown-popover\" data-popover aria-hidden=\"true\" class=\"min-w-56\">\n    <div role=\"menu\" id=\"my-dropdown-menu\" aria-labelledby=\"my-dropdown-trigger\">\n      <div role=\"group\" aria-labelledby=\"my-group-label\">\n        <div role=\"heading\" id=\"my-group-label\">My Account</div>\n        <div role=\"menuitem\">Profile <span class=\"text-muted-foreground ml-auto text-xs tracking-widest\">⇧⌘P</span></div>\n        <div role=\"menuitem\">Settings <span class=\"text-muted-foreground ml-auto text-xs tracking-widest\">⌘S</span></div>\n      </div>\n      <hr role=\"separator\" />\n      <div role=\"menuitem\">GitHub</div>\n      <div role=\"menuitem\">Support</div>\n      <div role=\"menuitem\" aria-disabled=\"true\">API</div>\n      <hr role=\"separator\" />\n      <div role=\"menuitem\">Logout</div>\n    </div>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Uses role=\"menu\" and role=\"menuitem\". Requires basecoat.min.js + dropdown-menu.min.js. Support menuitemcheckbox and menuitemradio roles."
+        },
+        {
+            "slug": "empty",
+            "name": "Empty",
+            "description": "Display empty states with icons, titles, descriptions, and actions. Uses Tailwind utility classes — no dedicated Basecoat class.",
+            "category": "layout",
+            "tags": ["placeholder", "no-data", "blank", "zero-state", "empty-state"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Empty state with icon, title, description, and actions",
+                    "html": "<div class=\"flex flex-col items-center justify-center gap-4 p-8 text-center\">\n  <div class=\"bg-muted flex size-12 items-center justify-center rounded-full\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground size-6\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /><path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /></svg>\n  </div>\n  <div class=\"grid gap-1.5\">\n    <h3 class=\"text-lg font-semibold\">No Projects Yet</h3>\n    <p class=\"text-muted-foreground text-sm\">You haven't created any projects yet. Get started by creating your first project.</p>\n  </div>\n  <div class=\"flex gap-2\">\n    <button class=\"btn\">Create Project</button>\n    <button class=\"btn-outline\">Import Project</button>\n  </div>\n</div>"
+                },
+                {
+                    "name": "outline",
+                    "description": "Empty state with dashed border",
+                    "html": "<div class=\"flex flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed p-8 text-center\">\n  <div class=\"bg-muted flex size-12 items-center justify-center rounded-full\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground size-6\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\" /><polyline points=\"17 8 12 3 7 8\" /><line x1=\"12\" x2=\"12\" y1=\"3\" y2=\"15\" /></svg>\n  </div>\n  <div class=\"grid gap-1.5\">\n    <h3 class=\"text-lg font-semibold\">Cloud Storage Empty</h3>\n    <p class=\"text-muted-foreground text-sm\">Upload files to your cloud storage to access them anywhere.</p>\n  </div>\n  <button class=\"btn\">Upload Files</button>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use semantic headings and descriptive text. Ensure action buttons have clear labels."
+        },
+        {
+            "slug": "field",
+            "name": "Field",
+            "description": "A form field wrapper that groups a label, input, and description/error message together.",
+            "category": "form",
+            "tags": ["form-field", "input-group", "validation", "label"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": ["form"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Form field with label, input, and description",
+                    "html": "<div class=\"form grid gap-2\">\n  <label for=\"field-username\">Username</label>\n  <input type=\"text\" id=\"field-username\" placeholder=\"hunvreus\">\n  <p class=\"text-muted-foreground text-sm\">This is your public display name.</p>\n</div>"
+                },
+                {
+                    "name": "invalid",
+                    "description": "Form field in error state",
+                    "html": "<div class=\"form grid gap-2\">\n  <label for=\"field-email\">Email</label>\n  <input type=\"email\" id=\"field-email\" aria-invalid=\"true\" value=\"invalid-email\">\n  <p class=\"text-destructive text-sm\">Please enter a valid email address.</p>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use aria-invalid=\"true\" on inputs with errors. Connect labels with for/id attributes."
+        },
+        {
+            "slug": "form",
+            "name": "Form",
+            "description": "Form container that automatically styles child <label>, <input>, <textarea>, and <select> elements. Adding the 'form' class to a parent applies styling to all nested form elements.",
+            "category": "layout",
+            "tags": ["form", "input", "submission", "data-entry"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["form"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Complete form with various field types",
+                    "html": "<form class=\"form grid gap-6\">\n  <div class=\"grid gap-2\">\n    <label for=\"form-text\">Username</label>\n    <input type=\"text\" id=\"form-text\" placeholder=\"hunvreus\">\n    <p class=\"text-muted-foreground text-sm\">This is your public display name.</p>\n  </div>\n  <div class=\"grid gap-2\">\n    <label for=\"form-email\">Email</label>\n    <select id=\"form-email\">\n      <option value=\"m@example.com\">m@example.com</option>\n      <option value=\"m@google.com\">m@google.com</option>\n    </select>\n  </div>\n  <div class=\"grid gap-2\">\n    <label for=\"form-bio\">Bio</label>\n    <textarea id=\"form-bio\" placeholder=\"Tell us about yourself...\" rows=\"3\"></textarea>\n  </div>\n  <button type=\"submit\" class=\"btn\">Submit</button>\n</form>"
+                }
+            ],
+            "accessibility_notes": "The 'form' class auto-styles child label, input, textarea, and select elements. Use for/id to connect labels."
+        },
+        {
+            "slug": "input",
+            "name": "Input",
+            "description": "Displays a form input field. Add the 'input' class to style it, or use within a parent with 'form' class.",
+            "category": "form",
+            "tags": ["text", "field", "text-field", "form-control"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["input"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic text input",
+                    "html": "<input class=\"input\" type=\"email\" placeholder=\"Email\">"
+                },
+                {
+                    "name": "with-label",
+                    "description": "Input with a label",
+                    "html": "<div class=\"form grid gap-2\">\n  <label for=\"input-email\">Email</label>\n  <input type=\"email\" id=\"input-email\" placeholder=\"m@example.com\">\n</div>"
+                },
+                {
+                    "name": "with-description",
+                    "description": "Input with label and helper text",
+                    "html": "<div class=\"form grid gap-2\">\n  <label for=\"input-name\">Name</label>\n  <input type=\"text\" id=\"input-name\">\n  <p class=\"text-muted-foreground text-sm\">Fill in your full name.</p>\n</div>"
+                },
+                {
+                    "name": "invalid",
+                    "description": "Input in error state",
+                    "html": "<input class=\"input\" type=\"email\" aria-invalid=\"true\" value=\"not-an-email\">"
+                },
+                {
+                    "name": "disabled",
+                    "description": "Disabled input",
+                    "html": "<input class=\"input\" type=\"text\" placeholder=\"Disabled\" disabled>"
+                },
+                {
+                    "name": "with-button",
+                    "description": "Input paired with a submit button",
+                    "html": "<div class=\"flex gap-2\">\n  <input class=\"input\" type=\"email\" placeholder=\"Email\">\n  <button class=\"btn\">Submit</button>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use aria-invalid=\"true\" for error state. Always pair with <label> using for/id. Disabled inputs are excluded from form submission."
+        },
+        {
+            "slug": "input-group",
+            "name": "Input Group",
+            "description": "Groups an input with prefix/suffix elements like icons, text, or buttons inside a single visual container.",
+            "category": "form",
+            "tags": ["addon", "prefix", "suffix", "icon-input"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["input-group"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Input group with icon prefix",
+                    "html": "<div class=\"input-group\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground\"><circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" /></svg>\n  <input type=\"text\" placeholder=\"Search...\">\n</div>"
+                },
+                {
+                    "name": "with-kbd",
+                    "description": "Input group with keyboard shortcut indicator",
+                    "html": "<div class=\"input-group\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground\"><circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" /></svg>\n  <input type=\"text\" placeholder=\"Search...\">\n  <kbd class=\"kbd\">/</kbd>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Input group visually wraps elements. The inner input should still have proper labeling."
+        },
+        {
+            "slug": "item",
+            "name": "Item",
+            "description": "A versatile list item component for displaying structured content with optional icon, title, description, and actions.",
+            "category": "layout",
+            "tags": ["list-item", "row", "entry", "record"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["item"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic item with icon, title, and description",
+                    "html": "<div class=\"item\">\n  <div class=\"bg-muted flex size-10 items-center justify-center rounded-lg\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-5\"><path d=\"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z\" /><path d=\"M14 2v4a2 2 0 0 0 2 2h4\" /></svg>\n  </div>\n  <div class=\"grid gap-0.5\">\n    <h3 class=\"font-medium\">Document Title</h3>\n    <p class=\"text-muted-foreground text-sm\">A brief description of the item.</p>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use semantic headings inside items. When items are interactive, use appropriate roles."
+        },
+        {
+            "slug": "kbd",
+            "name": "Kbd",
+            "description": "Used to display textual user input from keyboard. Shows keyboard shortcuts and key combinations.",
+            "category": "data-display",
+            "tags": ["keyboard", "shortcut", "key", "hotkey", "keybinding"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["kbd"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Single keyboard shortcut",
+                    "html": "<kbd class=\"kbd\">⌘K</kbd>"
+                },
+                {
+                    "name": "combination",
+                    "description": "Key combination with multiple keys",
+                    "html": "<span class=\"flex items-center gap-1\">\n  <kbd class=\"kbd\">Ctrl</kbd> + <kbd class=\"kbd\">B</kbd>\n</span>"
+                },
+                {
+                    "name": "in-button",
+                    "description": "Keyboard shortcut inside a button",
+                    "html": "<button class=\"btn-outline\">\n  Accept\n  <kbd class=\"kbd\">⏎</kbd>\n</button>"
+                }
+            ],
+            "accessibility_notes": "Use the <kbd> element for keyboard input. Screen readers will announce it appropriately."
+        },
+        {
+            "slug": "label",
+            "name": "Label",
+            "description": "Renders an accessible label associated with controls. Style may be affected by disabled peer or child elements.",
+            "category": "form",
+            "tags": ["form-label", "input-label", "field-label"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["label"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic label",
+                    "html": "<label class=\"label\" for=\"email\">Your email address</label>"
+                },
+                {
+                    "name": "with-input",
+                    "description": "Label paired with an input",
+                    "html": "<div class=\"grid gap-2\">\n  <label class=\"label\" for=\"label-email\">Email</label>\n  <input class=\"input\" type=\"email\" id=\"label-email\" placeholder=\"m@example.com\">\n</div>"
+                }
+            ],
+            "accessibility_notes": "Always use the for attribute to connect labels with their inputs. Label styling dims when associated input is disabled."
+        },
+        {
+            "slug": "pagination",
+            "name": "Pagination",
+            "description": "Pagination with page navigation, next and previous links. Built with button classes and Tailwind utilities — no dedicated Basecoat class.",
+            "category": "navigation",
+            "tags": ["pages", "paging", "navigation", "prev-next"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Pagination with previous, page numbers, and next",
+                    "html": "<nav role=\"navigation\" aria-label=\"pagination\" class=\"mx-auto flex w-full justify-center\">\n  <ul class=\"flex flex-row items-center gap-1\">\n    <li>\n      <a href=\"#\" class=\"btn-ghost\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m15 18-6-6 6-6\" /></svg>\n        Previous\n      </a>\n    </li>\n    <li><a href=\"#\" class=\"btn-icon-ghost\">1</a></li>\n    <li><a href=\"#\" class=\"btn-icon-outline\">2</a></li>\n    <li><a href=\"#\" class=\"btn-icon-ghost\">3</a></li>\n    <li>\n      <a href=\"#\" class=\"btn-ghost\">\n        Next\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m9 18 6-6-6-6\" /></svg>\n      </a>\n    </li>\n  </ul>\n</nav>"
+                }
+            ],
+            "accessibility_notes": "Use <nav> with role=\"navigation\" and aria-label=\"pagination\". Current page should use btn-icon-outline to indicate active state."
+        },
+        {
+            "slug": "popover",
+            "name": "Popover",
+            "description": "Displays rich content in a portal, triggered by a button. Supports side and alignment positioning.",
+            "category": "overlay",
+            "tags": ["popup", "portal", "floating", "tooltip-rich"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["popover"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Popover with form content",
+                    "html": "<div id=\"my-popover\" class=\"popover\">\n  <button id=\"my-popover-trigger\" type=\"button\" aria-expanded=\"false\" aria-controls=\"my-popover-popover\" class=\"btn-outline\">Open popover</button>\n  <div id=\"my-popover-popover\" data-popover aria-hidden=\"true\" class=\"w-80\">\n    <div class=\"grid gap-4\">\n      <header class=\"grid gap-1.5\">\n        <h4 class=\"leading-none font-medium\">Dimensions</h4>\n        <p class=\"text-muted-foreground text-sm\">Set the dimensions for the layer.</p>\n      </header>\n      <form class=\"form grid gap-2\">\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <label for=\"popover-width\">Width</label>\n          <input type=\"text\" id=\"popover-width\" value=\"100%\" class=\"col-span-2 h-8\" />\n        </div>\n        <div class=\"grid grid-cols-3 items-center gap-4\">\n          <label for=\"popover-height\">Height</label>\n          <input type=\"text\" id=\"popover-height\" value=\"25px\" class=\"col-span-2 h-8\" />\n        </div>\n      </form>\n    </div>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Uses data-popover attribute. Position with data-side (top/bottom/left/right) and data-align (start/center/end). Requires basecoat.min.js + popover.min.js."
+        },
+        {
+            "slug": "progress",
+            "name": "Progress",
+            "description": "Displays an indicator showing the completion progress of a task. Uses Tailwind utility classes — no dedicated Basecoat class.",
+            "category": "feedback",
+            "tags": ["loading", "bar", "completion", "percentage"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic progress bar",
+                    "html": "<div class=\"bg-primary/20 relative h-2 w-full overflow-hidden rounded-full\">\n  <div class=\"bg-primary h-full w-full flex-1 transition-all\" style=\"width: 66%\"></div>\n</div>"
+                },
+                {
+                    "name": "with-label",
+                    "description": "Progress bar with percentage label",
+                    "html": "<div class=\"grid gap-2\">\n  <div class=\"flex justify-between text-sm\">\n    <span>Progress</span>\n    <span class=\"text-muted-foreground\">66%</span>\n  </div>\n  <div class=\"bg-primary/20 relative h-2 w-full overflow-hidden rounded-full\">\n    <div class=\"bg-primary h-full w-full flex-1 transition-all\" style=\"width: 66%\"></div>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "For accessible progress, add role=\"progressbar\", aria-valuenow, aria-valuemin, and aria-valuemax attributes."
+        },
+        {
+            "slug": "radio-group",
+            "name": "Radio Group",
+            "description": "A set of checkable buttons where no more than one can be checked at a time.",
+            "category": "form",
+            "tags": ["radio", "option", "choice", "single-select"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": ["input"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic radio group",
+                    "html": "<fieldset class=\"grid gap-3\">\n  <label class=\"label\"><input type=\"radio\" name=\"radio-group\" value=\"default\" class=\"input\">Default</label>\n  <label class=\"label\"><input type=\"radio\" name=\"radio-group\" value=\"comfortable\" class=\"input\" checked>Comfortable</label>\n  <label class=\"label\"><input type=\"radio\" name=\"radio-group\" value=\"compact\" class=\"input\">Compact</label>\n</fieldset>"
+                },
+                {
+                    "name": "with-heading",
+                    "description": "Radio group with heading label",
+                    "html": "<div class=\"flex flex-col gap-3\">\n  <label>Notify me about...</label>\n  <fieldset class=\"grid gap-3\">\n    <label class=\"label font-normal\"><input type=\"radio\" name=\"notify\" value=\"all\" class=\"input\" checked>All new messages</label>\n    <label class=\"label font-normal\"><input type=\"radio\" name=\"notify\" value=\"dm\" class=\"input\">Direct messages and mentions</label>\n    <label class=\"label font-normal\"><input type=\"radio\" name=\"notify\" value=\"none\" class=\"input\">Nothing</label>\n  </fieldset>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use <fieldset> to group radios. All radios in a group share the same name attribute. Use 'input' class on each radio."
+        },
+        {
+            "slug": "select",
+            "name": "Select",
+            "description": "Displays a list of options for the user to pick from — triggered by a button. Supports both native HTML select and enhanced JS version.",
+            "category": "form",
+            "tags": ["dropdown", "picker", "choice", "options"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["select"],
+            "variants": [
+                {
+                    "name": "native",
+                    "description": "Native HTML select element",
+                    "html": "<select class=\"select w-[180px]\">\n  <optgroup label=\"Fruits\">\n    <option>Apple</option>\n    <option>Banana</option>\n    <option>Blueberry</option>\n    <option>Grapes</option>\n    <option>Pineapple</option>\n  </optgroup>\n</select>"
+                },
+                {
+                    "name": "enhanced",
+                    "description": "JavaScript-enhanced select with search",
+                    "html": "<div id=\"my-select\" class=\"select\">\n  <button type=\"button\" class=\"btn-outline w-[180px]\" id=\"my-select-trigger\" aria-haspopup=\"listbox\" aria-expanded=\"false\" aria-controls=\"my-select-listbox\">\n    <span class=\"truncate\">Select fruit...</span>\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"text-muted-foreground opacity-50 shrink-0\"><path d=\"m7 15 5 5 5-5\" /><path d=\"m7 9 5-5 5 5\" /></svg>\n  </button>\n  <div id=\"my-select-popover\" data-popover aria-hidden=\"true\">\n    <div role=\"listbox\" id=\"my-select-listbox\" aria-labelledby=\"my-select-trigger\">\n      <div role=\"group\" aria-labelledby=\"group-fruits\">\n        <div role=\"heading\" id=\"group-fruits\">Fruits</div>\n        <div role=\"option\" data-value=\"apple\">Apple</div>\n        <div role=\"option\" data-value=\"banana\">Banana</div>\n        <div role=\"option\" data-value=\"blueberry\">Blueberry</div>\n      </div>\n    </div>\n  </div>\n  <input type=\"hidden\" name=\"fruit\" value=\"\" />\n</div>"
+                }
+            ],
+            "accessibility_notes": "Native: add 'select' class to <select>. Enhanced: uses listbox/option ARIA pattern. Requires basecoat.min.js + select.min.js. Supports multiselect via aria-multiselectable=\"true\"."
+        },
+        {
+            "slug": "sidebar",
+            "name": "Sidebar",
+            "description": "A composable, themeable, and customizable sidebar component for navigation. Supports collapsible groups.",
+            "category": "layout",
+            "tags": ["navigation", "menu", "sidenav", "drawer"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["sidebar"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Sidebar with navigation groups",
+                    "html": "<aside class=\"sidebar\">\n  <header>\n    <h2 class=\"text-lg font-semibold\">Application</h2>\n  </header>\n  <nav>\n    <div role=\"group\">\n      <div role=\"heading\" class=\"text-xs font-medium text-muted-foreground uppercase tracking-wider px-2 py-1.5\">Platform</div>\n      <a href=\"#\" class=\"flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-accent\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\" /><polyline points=\"9 22 9 12 15 12 15 22\" /></svg>\n        Dashboard\n      </a>\n      <a href=\"#\" class=\"flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-accent\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\" ry=\"2\" /><line x1=\"16\" x2=\"16\" y1=\"2\" y2=\"6\" /><line x1=\"8\" x2=\"8\" y1=\"2\" y2=\"6\" /><line x1=\"3\" x2=\"21\" y1=\"10\" y2=\"10\" /></svg>\n        Calendar\n      </a>\n    </div>\n  </nav>\n</aside>"
+                }
+            ],
+            "accessibility_notes": "Use <aside> with <nav> for sidebar navigation. Requires basecoat.min.js + sidebar.min.js for collapse behavior."
+        },
+        {
+            "slug": "skeleton",
+            "name": "Skeleton",
+            "description": "Used to show a placeholder while content is loading. Uses animate-pulse Tailwind utility — no dedicated Basecoat class.",
+            "category": "feedback",
+            "tags": ["loading", "placeholder", "shimmer", "preloader"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic skeleton with avatar and text lines",
+                    "html": "<div class=\"flex items-center gap-4\">\n  <div class=\"bg-accent animate-pulse size-10 shrink-0 rounded-full\"></div>\n  <div class=\"grid gap-2\">\n    <div class=\"bg-accent animate-pulse rounded-md h-4 w-[150px]\"></div>\n    <div class=\"bg-accent animate-pulse rounded-md h-4 w-[100px]\"></div>\n  </div>\n</div>"
+                },
+                {
+                    "name": "card",
+                    "description": "Skeleton for a card layout",
+                    "html": "<div class=\"card\">\n  <section class=\"grid gap-4\">\n    <div class=\"bg-accent animate-pulse rounded-lg h-48\"></div>\n    <div class=\"grid gap-2\">\n      <div class=\"bg-accent animate-pulse rounded-md h-4 w-3/4\"></div>\n      <div class=\"bg-accent animate-pulse rounded-md h-4 w-1/2\"></div>\n    </div>\n  </section>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Add aria-busy=\"true\" to the loading container and aria-hidden=\"true\" to skeleton elements."
+        },
+        {
+            "slug": "slider",
+            "name": "Slider",
+            "description": "An input where the user selects a value from within a given range. Uses native range input with 'input' class.",
+            "category": "form",
+            "tags": ["range", "volume", "brightness", "numeric"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": ["input"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic range slider",
+                    "html": "<input type=\"range\" class=\"input w-full\" min=\"0\" max=\"100\" value=\"50\">"
+                },
+                {
+                    "name": "with-js",
+                    "description": "Range slider with JavaScript for painted track",
+                    "html": "<input type=\"range\" class=\"input w-full\" min=\"0\" max=\"100\" value=\"50\" id=\"my-slider\">\n<script>\n  (() => {\n    const slider = document.getElementById('my-slider');\n    const update = (el) => {\n      const percent = ((el.value - el.min) / (el.max - el.min)) * 100;\n      el.style.setProperty('--slider-value', `${percent}%`);\n    };\n    update(slider);\n    slider.addEventListener('input', (e) => update(e.target));\n  })();\n</script>"
+                }
+            ],
+            "accessibility_notes": "Uses native <input type=\"range\">. Add min, max, and value attributes. Needs JavaScript to paint the left side of the slider track."
+        },
+        {
+            "slug": "spinner",
+            "name": "Spinner",
+            "description": "An indicator that can be used to show a loading state. Uses Lucide loader-circle icon with animate-spin — no dedicated Basecoat class.",
+            "category": "feedback",
+            "tags": ["loading", "loader", "busy", "processing"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic spinner",
+                    "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"animate-spin\" role=\"status\" aria-label=\"Loading\">\n  <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n</svg>"
+                },
+                {
+                    "name": "with-text",
+                    "description": "Spinner with loading text",
+                    "html": "<div class=\"flex items-center gap-2\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"animate-spin\" role=\"status\" aria-label=\"Loading\">\n    <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n  </svg>\n  <span class=\"text-sm text-muted-foreground\">Loading...</span>\n</div>"
+                },
+                {
+                    "name": "in-button",
+                    "description": "Spinner inside a loading button",
+                    "html": "<button class=\"btn\" disabled>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"animate-spin\">\n    <path d=\"M21 12a9 9 0 1 1-6.219-8.56\" />\n  </svg>\n  Please wait\n</button>"
+                }
+            ],
+            "accessibility_notes": "Add role=\"status\" and aria-label=\"Loading\" to the spinner SVG. Use size-* for different sizes, text-* for colors."
+        },
+        {
+            "slug": "switch",
+            "name": "Switch",
+            "description": "A control that allows the user to toggle between checked and not checked. Uses checkbox with role=\"switch\".",
+            "category": "form",
+            "tags": ["toggle", "on-off", "boolean", "enable-disable"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": ["input"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic switch toggle",
+                    "html": "<input type=\"checkbox\" role=\"switch\" class=\"input\">"
+                },
+                {
+                    "name": "with-label",
+                    "description": "Switch with label and description",
+                    "html": "<div class=\"flex flex-row items-start justify-between gap-2 rounded-lg border p-4 shadow-xs\">\n  <div class=\"flex flex-col gap-0.5\">\n    <label for=\"switch-marketing\" class=\"label leading-normal\">Marketing emails</label>\n    <p class=\"text-muted-foreground text-sm\">Receive emails about new products, features, and more.</p>\n  </div>\n  <input type=\"checkbox\" id=\"switch-marketing\" role=\"switch\" class=\"input\">\n</div>"
+                }
+            ],
+            "accessibility_notes": "Use <input type=\"checkbox\" role=\"switch\"> with 'input' class. The role=\"switch\" attribute is required."
+        },
+        {
+            "slug": "table",
+            "name": "Table",
+            "description": "A responsive table component. Simply add the 'table' class to your table element.",
+            "category": "data-display",
+            "tags": ["data", "grid", "spreadsheet", "list", "rows"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["table"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Data table with header and rows",
+                    "html": "<table class=\"table\">\n  <thead>\n    <tr>\n      <th>Invoice</th>\n      <th>Status</th>\n      <th>Method</th>\n      <th class=\"text-right\">Amount</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class=\"font-medium\">INV001</td>\n      <td>Paid</td>\n      <td>Credit Card</td>\n      <td class=\"text-right\">$250.00</td>\n    </tr>\n    <tr>\n      <td class=\"font-medium\">INV002</td>\n      <td>Pending</td>\n      <td>PayPal</td>\n      <td class=\"text-right\">$150.00</td>\n    </tr>\n    <tr>\n      <td class=\"font-medium\">INV003</td>\n      <td>Unpaid</td>\n      <td>Bank Transfer</td>\n      <td class=\"text-right\">$350.00</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"3\">Total</td>\n      <td class=\"text-right font-medium\">$750.00</td>\n    </tr>\n  </tfoot>\n</table>"
+                }
+            ],
+            "accessibility_notes": "Use semantic <thead>, <tbody>, <tfoot>. Add scope attributes to headers for screen readers."
+        },
+        {
+            "slug": "tabs",
+            "name": "Tabs",
+            "description": "A set of layered sections of content — known as tab panels — that are displayed one at a time.",
+            "category": "navigation",
+            "tags": ["tabbed", "panels", "sections", "views"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["tabs"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Tabs with tab panels",
+                    "html": "<div class=\"tabs w-full\" id=\"my-tabs\">\n  <nav role=\"tablist\" aria-orientation=\"horizontal\" class=\"w-full\">\n    <button type=\"button\" role=\"tab\" id=\"my-tabs-tab-1\" aria-controls=\"my-tabs-panel-1\" aria-selected=\"true\" tabindex=\"0\">Account</button>\n    <button type=\"button\" role=\"tab\" id=\"my-tabs-tab-2\" aria-controls=\"my-tabs-panel-2\" aria-selected=\"false\" tabindex=\"0\">Password</button>\n  </nav>\n  <div role=\"tabpanel\" id=\"my-tabs-panel-1\" aria-labelledby=\"my-tabs-tab-1\" tabindex=\"-1\" aria-selected=\"true\">\n    <div class=\"card\">\n      <header>\n        <h2>Account</h2>\n        <p>Make changes to your account here.</p>\n      </header>\n      <section>\n        <form class=\"form grid gap-4\">\n          <div class=\"grid gap-2\">\n            <label for=\"tabs-name\">Name</label>\n            <input type=\"text\" id=\"tabs-name\" value=\"Pedro Duarte\" />\n          </div>\n        </form>\n      </section>\n      <footer>\n        <button class=\"btn\">Save changes</button>\n      </footer>\n    </div>\n  </div>\n  <div role=\"tabpanel\" id=\"my-tabs-panel-2\" aria-labelledby=\"my-tabs-tab-2\" tabindex=\"-1\" aria-selected=\"false\" hidden>\n    <div class=\"card\">\n      <header>\n        <h2>Password</h2>\n        <p>Change your password here.</p>\n      </header>\n      <section>\n        <form class=\"form grid gap-4\">\n          <div class=\"grid gap-2\">\n            <label for=\"tabs-current\">Current password</label>\n            <input type=\"password\" id=\"tabs-current\" />\n          </div>\n          <div class=\"grid gap-2\">\n            <label for=\"tabs-new\">New password</label>\n            <input type=\"password\" id=\"tabs-new\" />\n          </div>\n        </form>\n      </section>\n      <footer>\n        <button class=\"btn\">Save Password</button>\n      </footer>\n    </div>\n  </div>\n</div>"
+                }
+            ],
+            "accessibility_notes": "Uses ARIA tab pattern: role=\"tablist\", role=\"tab\", role=\"tabpanel\". Requires basecoat.min.js + tabs.min.js. Connect tabs and panels with aria-controls/aria-labelledby."
+        },
+        {
+            "slug": "textarea",
+            "name": "Textarea",
+            "description": "Displays a form textarea. Add the 'textarea' class to style it, or use within a parent with 'form' class.",
+            "category": "form",
+            "tags": ["multiline", "text-area", "long-text", "message"],
+            "requires_js": false,
+            "has_dedicated_class": true,
+            "css_classes": ["textarea"],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic textarea",
+                    "html": "<textarea class=\"textarea\" placeholder=\"Type your message here\"></textarea>"
+                },
+                {
+                    "name": "with-label",
+                    "description": "Textarea with label",
+                    "html": "<div class=\"form grid gap-2\">\n  <label for=\"ta-bio\">Bio</label>\n  <textarea id=\"ta-bio\" placeholder=\"Tell us about yourself...\" rows=\"3\"></textarea>\n  <p class=\"text-muted-foreground text-sm\">You can @mention other users and organizations.</p>\n</div>"
+                },
+                {
+                    "name": "invalid",
+                    "description": "Textarea in error state",
+                    "html": "<textarea class=\"textarea\" aria-invalid=\"true\">Invalid content</textarea>"
+                }
+            ],
+            "accessibility_notes": "Use aria-invalid=\"true\" for error state. Always pair with <label>."
+        },
+        {
+            "slug": "theme-switcher",
+            "name": "Theme Switcher",
+            "description": "A toggle for switching between light and dark themes. Uses a dropdown or button to change the [data-theme] attribute.",
+            "category": "navigation",
+            "tags": ["dark-mode", "light-mode", "theme", "color-scheme"],
+            "requires_js": true,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Theme toggle button",
+                    "html": "<button class=\"btn-icon-ghost\" onclick=\"document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'\" aria-label=\"Toggle theme\">\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"dark:hidden\"><circle cx=\"12\" cy=\"12\" r=\"4\" /><path d=\"M12 2v2\" /><path d=\"M12 20v2\" /><path d=\"m4.93 4.93 1.41 1.41\" /><path d=\"m17.66 17.66 1.41 1.41\" /><path d=\"M2 12h2\" /><path d=\"M20 12h2\" /><path d=\"m6.34 17.66-1.41 1.41\" /><path d=\"m19.07 4.93-1.41 1.41\" /></svg>\n  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"hidden dark:block\"><path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\" /></svg>\n</button>"
+                }
+            ],
+            "accessibility_notes": "Use aria-label on the toggle button. Set [data-theme] on <html> element to switch themes."
+        },
+        {
+            "slug": "toast",
+            "name": "Toast",
+            "description": "A succinct message that is displayed temporarily. Supports categories: success, info, warning, error.",
+            "category": "overlay",
+            "tags": ["notification", "snackbar", "alert", "temporary"],
+            "requires_js": true,
+            "has_dedicated_class": true,
+            "css_classes": ["toaster", "toast", "toast-content"],
+            "variants": [
+                {
+                    "name": "container",
+                    "description": "Toast container (toaster) — place at end of <body>",
+                    "html": "<div id=\"toaster\" class=\"toaster\"></div>"
+                },
+                {
+                    "name": "server-rendered",
+                    "description": "Server-rendered toast inside the toaster",
+                    "html": "<div id=\"toaster\" class=\"toaster\">\n  <div class=\"toast\" role=\"status\" aria-atomic=\"true\" aria-hidden=\"false\" data-category=\"success\">\n    <div class=\"toast-content\">\n      <svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <circle cx=\"12\" cy=\"12\" r=\"10\" />\n        <path d=\"m9 12 2 2 4-4\" />\n      </svg>\n      <section>\n        <h2>Success</h2>\n        <p>Your changes have been saved.</p>\n      </section>\n      <footer>\n        <button type=\"button\" class=\"btn\" data-toast-action>Dismiss</button>\n      </footer>\n    </div>\n  </div>\n</div>"
+                },
+                {
+                    "name": "javascript",
+                    "description": "Trigger a toast from JavaScript",
+                    "html": "<button class=\"btn-outline\" onclick=\"document.dispatchEvent(new CustomEvent('basecoat:toast', { detail: { config: { category: 'success', title: 'Success', description: 'Your changes have been saved.', cancel: { label: 'Dismiss' } } } }))\">Show Toast</button>"
+                }
+            ],
+            "accessibility_notes": "Uses role=\"status\" and aria-atomic=\"true\". Categories: success, info, warning, error. Default duration 3s (5s for errors). Requires basecoat.min.js + toast.min.js. Place <div id=\"toaster\" class=\"toaster\"> at end of <body>."
+        },
+        {
+            "slug": "tooltip",
+            "name": "Tooltip",
+            "description": "A popup that displays information related to an element when it receives keyboard focus or the mouse hovers over it. Uses data-tooltip attribute — CSS only.",
+            "category": "data-display",
+            "tags": ["hint", "help", "hover", "info", "popover-simple"],
+            "requires_js": false,
+            "has_dedicated_class": false,
+            "css_classes": [],
+            "variants": [
+                {
+                    "name": "default",
+                    "description": "Basic tooltip (bottom center)",
+                    "html": "<button class=\"btn-outline\" data-tooltip=\"This is a tooltip\" data-side=\"bottom\" data-align=\"center\">Hover me</button>"
+                },
+                {
+                    "name": "top",
+                    "description": "Tooltip positioned on top",
+                    "html": "<button class=\"btn-outline\" data-tooltip=\"Top tooltip\" data-side=\"top\">Top</button>"
+                },
+                {
+                    "name": "right",
+                    "description": "Tooltip positioned on the right",
+                    "html": "<button class=\"btn-outline\" data-tooltip=\"Right tooltip\" data-side=\"right\">Right</button>"
+                },
+                {
+                    "name": "left",
+                    "description": "Tooltip positioned on the left",
+                    "html": "<button class=\"btn-outline\" data-tooltip=\"Left tooltip\" data-side=\"left\">Left</button>"
+                }
+            ],
+            "accessibility_notes": "Set data-tooltip for text, data-side for position (top/bottom/left/right), data-align for alignment (start/center/end). Pure CSS, no JS required."
+        }
+    ]
+}
